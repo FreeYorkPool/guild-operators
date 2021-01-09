@@ -21,6 +21,11 @@ CNODE_PORT=6000                                         # Set node port
 #CURL_TIMEOUT=10                                        # Maximum time in seconds that you allow curl file download to take before aborting (GitHub update process)
 #BLOCKLOG_DIR="${CNODE_HOME}/guild-db/blocklog"         # Override default directory used to store block data for core node
 #BLOCKLOG_TZ="UTC"                                      # TimeZone to use when displaying blocklog - https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+#DBSYNC_HOST=127.0.0.1                                  # IP Address of the db-sync instance
+#DBSYNC_PORT=5432                                       # Port of the db-sync instance (normally 5432)
+#DBSYNC_USER=postgres                                   # User with permissions to the db-sync instance
+#DBSYNC_PASS=                                           # Password for the User with permissions to db-sync instance
+
 
 #WALLET_FOLDER="${CNODE_HOME}/priv/wallet"              # Root folder for Wallets
 #POOL_FOLDER="${CNODE_HOME}/priv/pool"                  # Root folder for Pools
@@ -204,6 +209,11 @@ fi
 BLOCKLOG_DB="${BLOCKLOG_DIR}/blocklog.db"
 [[ -z ${BLOCKLOG_TZ} ]] && BLOCKLOG_TZ="UTC"
 [[ -z ${CNODE_PORT} ]] && CNODE_PORT=6000
+
+[[ -z ${DBSYNC_HOST} ]] && DBSYNC_HOST=127.0.0.1
+[[ -z ${DBSYNC_PORT} ]] && DBSYNC_PORT=5432
+[[ -z ${DBSYNC_USER} ]] && DBSYNC_USER=postgres
+[[ -z ${DBSYNC_PASS} ]] && DBSYNC_PASS=''
 
 CNODE_PID=$(pgrep -fn "[c]ardano-node*.*--port ${CNODE_PORT}")
 
